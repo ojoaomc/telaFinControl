@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinControl - Categorias</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="barra-navegacao">
+    <div class="container-navegacao">
+      <div class="logo">
+        <span class="logo-icone">F</span>
+        <span class="logo-texto">FinControl</span>
+      </div>
+      
+      <nav class="links-navegacao">
+        <a href="#">Lançamentos</a>
+        <a href="#">Histórico</a>
+        <a href="#">Relatórios</a>
+        <a href="#" class="ativo">Categorias</a>
+      </nav>
+
+      <div class="perfil-usuario">
+        <div class="avatar">UU</div>
+        <div class="info-usuario">
+          <span class="nome-usuario">Usuário</span>
+          <span class="email-usuario">usuario@email.com</span>
+        </div>
+        <button class="botao-sair">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container-principal">
+    <section class="cabecalho-boas-vindas">
+      <h1>Olá, Usuário</h1>
+      <p>Registre, altere e exclua suas categorias</p>
+    </section>
+
+    <div class="area-cards">
+      
+      <div class="card">
+        <h2 id="titulo-formulario">Nova categoria</h2>
+        <form id="formulario-categoria">
+          <input type="hidden" id="categoria-id">
+
+          <div class="grupo-radio">
+            <label class="rotulo-radio">
+              <input type="radio" name="tipo" value="receita" checked>
+              <span>Receita</span>
+            </label>
+            <label class="rotulo-radio">
+              <input type="radio" name="tipo" value="despesa">
+              <span>Despesa</span>
+            </label>
+          </div>
+
+          <div class="grupo-formulario">
+            <label for="nome">Nome (*)</label>
+            <input type="text" id="nome" placeholder="Nome da categoria" required>
+          </div>
+
+          <div class="grupo-botoes">
+            <button type="button" id="btn-limpar" class="btn-secundario">Limpar</button>
+            <button type="submit" id="btn-salvar" class="btn-primario">Adicionar categoria</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <div class="acoes-cabecalho-card">
+          <button id="btn-editar" class="btn-acao btn-editar" disabled>Editar</button>
+          <button id="btn-excluir" class="btn-acao btn-excluir" disabled>Excluir</button>
+        </div>
+
+        <h2 class="titulo-centralizado">Suas categorias</h2>
+
+        <div class="abas">
+          <button class="btn-aba" data-aba="receita">Receita</button>
+          <button class="btn-aba ativo" data-aba="despesa">Despesa</button>
+        </div>
+
+        <ul id="lista-categorias" class="lista-categorias"></ul>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <div class="container-rodape">
+      <div class="logo">
+        <span class="logo-icone verde">F</span>
+        <span class="logo-texto texto-branco">FinControl</span>
+      </div>
+      <p>Trabalho Interdisciplinar, ICEI PUC Minas</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

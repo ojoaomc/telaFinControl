@@ -1,5 +1,5 @@
-// JSON
-let dados = {
+// JSON (Pega o localStorage se existir, se não carrega os dados padrão)
+let dados = JSON.parse(localStorage.getItem("fincontrol_categorias")) || {
   "categorias": [
     { "id": 1, "nome": "Alimentação", "tipo": "despesa" },
     { "id": 2, "nome": "Transporte", "tipo": "despesa" },
@@ -23,6 +23,11 @@ const botoesAbas = document.querySelectorAll(".btn-aba");
 
 const btnEditar = document.getElementById("btn-editar");
 const btnExcluir = document.getElementById("btn-excluir");
+
+// Salvar dados atualizados no localStorage
+function salvarNoLocalStorage() {
+  localStorage.setItem("fincontrol_categorias", JSON.stringify(dados));
+}
 
 function renderizarCategorias() {
   listaCategorias.innerHTML = "";
@@ -119,10 +124,15 @@ formulario.addEventListener("submit", (e) => {
     dados.categorias.push(novaCategoria);
   }
 
+  salvarNoLocalStorage();
   limparFormulario();
+
   // Alterna para a aba correspondente ao tipo salvo
   abaAtual = tipo;
-  document.querySelector(`.btn-aba[data-aba="${tipo}"]`).click();
+  botoesAbas.forEach(b => {
+    b.classList.toggle("ativo", b.getAttribute("data-aba") === tipo);
+  });
+  renderizarCategorias();
 });
 
 // Ação do botão Editar
@@ -145,6 +155,7 @@ btnExcluir.addEventListener("click", () => {
   if (!idCategoriaSelecionada) return;
 
   dados.categorias = dados.categorias.filter(cat => cat.id !== idCategoriaSelecionada);
+  salvarNoLocalStorage();
   limparFormulario();
 });
 
